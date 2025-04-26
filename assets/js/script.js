@@ -104,14 +104,88 @@ console.log('Numero aleatorio: ', Math.random());
 console.log('Aleatorio de 1 a 10: ', Math.floor(Math.random() * (10 - 1 + 1)) + 1);
 
 //manipular tags html
-let titulo = document.getElementById('titulo');
-window.alert(titulo.innerHTML)
-console.log(titulo);
-let novoTitulo = 'Professor Adolfo você buga meu sistema!'
-titulo.innerHTML = novoTitulo;
-
+// let titulo = document.getElementById('titulo');
+// window.alert(titulo.innerHTML)
+// console.log(titulo);
+// let novoTitulo = 'Professor Adolfo você buga meu sistema!'
+// titulo.innerHTML = novoTitulo;
+let userValue = ''
 function handleChangeUser(event){
    // conssole.log('aqui')
     console.log(event.target.value)
+    userValue = event.target.value
 }
-console.log(userValue)
+console.log(userValue);
+
+//selecionar elementos com a mesma tag
+let textDefault = document.getElementsByClassName('text defalt');
+console.log(textDefault);
+//seleciona elementos por nome da tag
+let tagElements = document.getElementsByTagName('h1')
+console.log(tagElements);
+//seleciona elementos por valor do atributo nome da tag
+let nameArtElements =document.getElementsByName('section');
+console.log(nameArtElements);
+
+let paragrafo = document.querySelector('p.text-default');
+console.log(paragrafo);
+let paragrafos = document.querySelectorAll('p');
+console.log(paragrafos);
+//manipular classes de um helemento
+let tituloVermelho = document.querySelector('h1.vermelho');
+tituloVermelho.classList.remove('vermelho');
+tituloVermelho.classList.add('verde');
+
+tituloVermelho.style.fontSize = '60px';
+tituloVermelho.style.backgroundColor = '#000';
+tituloVermelho.style.display = 'flex';
+tituloVermelho.style.justifyContent = 'center';
+tituloVermelho.style.height = '100px';
+
+let btnUp = document.querySelector('#btnUp');   
+console.log(btnUp);
+btnUp.addEventListener('click', function(event){
+    console.log('Toca aqui')
+    let paragrafo = document.querySelector('p.text-default');
+    console.log(paragrafo)
+//pegar valores do estilo de um elemento
+    let fontSizeAtual = getComputedStyle(paragrafo).fontSize;
+    //converter string para numero decimal
+    fontSizeAtual = parseFloat(fontSizeAtual);
+    fontSizeAtual += 1; //incrementar mais um
+    console.log(fontSizeAtual);
+    paragrafo.style.fontSize = `${fontSizeAtual}px`;
+})
+let btnDonw = document.querySelector('#btnDonw');   
+console.log(btnDonw);
+btnDonw.addEventListener('click', function(event){
+    console.log('Toca aqui')
+    let paragrafo = document.querySelector('p.text-default');
+    console.log(paragrafo)
+//pegar valores do estilo de um elemento
+    let fontSizeAtual = getComputedStyle(paragrafo).fontSize;
+    //converter string para numero decimal
+    fontSizeAtual = parseFloat(fontSizeAtual);
+    fontSizeAtual -= 1; // diminuir um
+    console.log(fontSizeAtual);
+    paragrafo.style.fontSize = `${fontSizeAtual}px`;
+})
+
+//botão soma
+let btnSoma = document.querySelector('#btnSoma');
+console.log(btnSoma);
+btnSoma.addEventListener('click', function(event){
+    console.log('mais mais, baby');
+
+    let num1 = document.querySelector('#num1');
+    console.log(num1.value);//para validar a informação que está incluindo no input
+    let num2 = document.querySelector('#num2');
+    console.log(num2.value);
+
+    let umN = parseFloat(num1.value); //convertendo para numero flutuante/quebrado
+    let doisN = parseFloat(num2.value);
+    let final = umN + doisN
+
+    let pe =  document.querySelector('#pe');
+    pe.innerHTML = final;
+})
